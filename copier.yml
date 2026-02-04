@@ -3,7 +3,7 @@ _subdirectory: template
 _template_version:
     type: str
     default: >-
-        [[ run("grep -m 1 '^version =' pyproject.toml | tr -d '\" ' | cut -d '=' -f 2") ]]
+        [[ run("grep -m 1 '^version =' " ~ _copier_conf.src_path ~ "/pyproject.toml | tr -d '\" ' | cut -d '=' -f 2") ]]
 
 project_name_kebab_case:
     type: str
