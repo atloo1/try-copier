@@ -1,9 +1,10 @@
 [project]
 name = "try-copier"
-version = "0.1.1"
+version = "0.1.2"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "copier>=9.11.3",
+    "pre-commit>=4.5.1",
 ]

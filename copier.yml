@@ -1,5 +1,10 @@
 _subdirectory: template
 
+_template_version:
+    type: str
+    default: >-
+        [[ run("grep -m 1 '^version =' pyproject.toml | tr -d '\" ' | cut -d '=' -f 2") ]]
+
 project_name_kebab_case:
     type: str
     help: project_name_kebab_case (this-is-kebab-case)
