@@ -1,9 +1,5 @@
 _subdirectory: template
 
-_template_version:
-  type: str
-  default: TODO
-
 author_email:
   default: 15357562+atloo1@users.noreply.github.com
   help: project author email
@@ -70,7 +66,7 @@ renovate:
 
 template_version:
   type: str
-  default: '{{_template_version}}'
+  default: TODO
   when: false
 
 testing:
