@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+
+jobs:
+  all-in-one-job:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [
+          {% for minor in range(project_python_min_version.split(".")[1] | int, 14) -%}
+          "3.{{ minor }}"{% if not loop.last %},{% endif %}
+          {% endfor -%}
+        ]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: "setup Python {% raw %}${{ matrix.python-version }}{% endraw %}"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{% raw %}${{ matrix.python-version }}{% endraw %}"
+
+      - name: setup uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: cache pre-commit
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit/
+          key: pre-commit-4|{% raw %}${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}{% endraw %}
+          restore-keys: |
+            pre-commit-4|{% raw %}${{ env.pythonLocation }}|{% endraw %}
+
+      - name: install project
+        run: uv sync --locked --all-extras --dev && uv pip install -e .
+
+      - name: run pre-commit
+        run: uv run pre-commit run --all-files
+
+      - name: run pytest
+        run: uv run pytest

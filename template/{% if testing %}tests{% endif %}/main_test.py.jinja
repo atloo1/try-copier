@@ -1,0 +1,17 @@
+"""
+test src/{{ project_name_kebab_case.replace('-', '_') }}/main.py
+
+run with:
+```
+uv run pytest tests/main_test.py
+```
+"""
+
+import pytest
+
+from {{ project_name_kebab_case.replace('-', '_') }} import main
+
+
+def test_main():
+    with pytest.raises(NotImplementedError):
+        main.main()

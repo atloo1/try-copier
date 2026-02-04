@@ -1,10 +1,74 @@
 _subdirectory: template
 
 _template_version:
-    type: str
-    default: >-
-        [[ run("grep -m 1 '^[[:space:]]*version[[:space:]]*=' '" ~ _copier_conf.src_path ~ "/pyproject.toml' | tr -d ' \"' | cut -d'=' -f2") ]]
+  type: str
+  default: TODO
+
+author_email:
+  default: "15357562+atloo1@users.noreply.github.com"
+  help: project author email
+  type: str
+
+author_name:
+  default: "atloo1"
+  help: project author GitHub username
+  type: str
+
+containerize:
+  default: yes
+  help: configure for Docker?
+  type: bool
+
+github_actions:
+  default: yes
+  help: include CI via GitHub actions?
+  type: bool
+
+license:
+  choices:
+    - "Apache-2.0"
+    - "BSD-3-Clause"
+    - "MIT"
+    - "OSL-3.0"
+    - "proprietary"
+  default: "MIT"
+  help: project license
+  type: str
+
+project_description:
+  default: TODO
+  help: brief project description for pyproject.toml & README.md
+  type: str
 
 project_name_kebab_case:
-    type: str
-    help: project_name_kebab_case (this-is-kebab-case)
+  default: new-templated-repo
+  help: project name in kebab case (this-is-kebab-case)
+  type: str
+  validator: >-
+    {% if not (project_name_kebab_case | regex_search('^[-a-zA-Z][-a-zA-Z0-9]+$')) %}
+    {{ project_name_kebab_case }} is not kebab case: https://en.wikipedia.org/wiki/Letter_case#Kebab_case
+    {% endif %}
+
+project_python_min_version:
+  default: "3.10"
+  help: support Python version ≥ this version (in semver syntax)
+  type: str
+
+project_version:
+  default: 0.1.0
+  help: project version (in semver syntax)
+  type: str
+  validator: >-
+    {% if not (project_version | regex_search('^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$')) %}
+    {{ project_version }} is not SemVer: https://semver.org/#semantic-versioning-specification-semver
+    {% endif %}
+
+renovate:
+  default: yes
+  help: automate dependency updates via renovate?
+  type: bool
+
+testing:
+  default: yes
+  help: include testing via pytest?
+  type: bool

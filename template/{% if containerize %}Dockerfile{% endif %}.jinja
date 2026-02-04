@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1
+
+FROM python:{{ project_python_min_version }}-slim
+
+WORKDIR /app
+
+# create less privileged user w/ write permissions in WORKDIR to run app
+# https://docs.docker.com/go/dockerfile-user-best-practices/
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --shell "/sbin/nologin" \
+    --uid "10001" \
+    appuser \
+    && \
+    chown appuser -R /app/
+
+# install dependencies w/ uv
+# https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY pyproject.toml uv.lock /app/
+RUN uv sync --locked && rm pyproject.toml uv.lock
+
+# [1] don't write pyc files
+# [2] don't buffer stdout & stderr; keeps post crash logs
+# [3] ensure uv in PATH
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/root/.local/bin/:$PATH"
+
+# copy source code into WORKDIR
+COPY src/ src/
+
+# switch to less privileged user
+USER appuser
+
+# run application
+ENTRYPOINT ["uv", "run", "python", "-m", "src.{{ project_name_kebab_case.replace('-', '_') }}.main"]
