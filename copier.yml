@@ -76,4 +76,5 @@ testing:
 
 _tasks:
   - '[ -d .git ] || (git init --initial-branch=main)'
+  - 'uv add --group dev mypy pre-commit ruff'
   - '{% if testing %}uv add --group dev pytest{% endif %}'

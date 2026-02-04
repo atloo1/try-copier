@@ -10,6 +10,9 @@ readme = 'README.md'
 requires-python = '>={{project_python_min_version}}'
 version = '{{project_version}}'
 
+[tool.pytest.ini_options]
+pythonpath = ['src']
+
 [tool.ruff]
 lint.extend-select = ['I']  # sort imports
 
