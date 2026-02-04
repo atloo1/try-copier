@@ -1,0 +1,5 @@
+_subdirectory: template
+
+project_name_kebab_case:
+    type: str
+    help: project_name_kebab_case (this-is-kebab-case)
