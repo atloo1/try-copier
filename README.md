@@ -17,6 +17,6 @@ uv run python -m src.test_try_copier.main
 
 ```
 cd test-try-copier/
-copier update --defaults
+copier update --defaults --trust
 uv run python -m src.test_try_copier.main
 ```

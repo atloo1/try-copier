@@ -76,3 +76,4 @@ testing:
 
 _tasks:
   - '[ -d .git ] || (git init --initial-branch=main)'
+  - '{% if testing %}uv add --group dev pytest{% endif %}'

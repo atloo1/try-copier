@@ -1,0 +1,17 @@
+[project]
+authors = [
+    {name = '{{author_name}}', email = '{{author_email}}'},
+]
+dependencies = []
+description = '{{project_description}}'
+license = '{{license}}'
+name = '{{project_name_kebab_case}}'
+readme = 'README.md'
+requires-python = '>={{project_python_min_version}}'
+version = '{{project_version}}'
+
+[tool.ruff]
+lint.extend-select = ['I']  # sort imports
+
+[tool.ruff.format]
+quote-style = 'single'
