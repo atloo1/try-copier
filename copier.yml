@@ -5,12 +5,12 @@ _template_version:
   default: TODO
 
 author_email:
-  default: "15357562+atloo1@users.noreply.github.com"
+  default: 15357562+atloo1@users.noreply.github.com
   help: project author email
   type: str
 
 author_name:
-  default: "atloo1"
+  default: atloo1
   help: project author GitHub username
   type: str
 
@@ -26,12 +26,12 @@ github_actions:
 
 license:
   choices:
-    - "Apache-2.0"
-    - "BSD-3-Clause"
-    - "MIT"
-    - "OSL-3.0"
-    - "proprietary"
-  default: "MIT"
+    - Apache-2.0
+    - BSD-3-Clause
+    - MIT
+    - OSL-3.0
+    - proprietary
+  default: MIT
   help: project license
   type: str
 
@@ -50,7 +50,7 @@ project_name_kebab_case:
     {% endif %}
 
 project_python_min_version:
-  default: "3.10"
+  default: '3.10'
   help: support Python version ≥ this version (in semver syntax)
   type: str
 
@@ -67,6 +67,11 @@ renovate:
   default: yes
   help: automate dependency updates via renovate?
   type: bool
+
+template_version:
+  type: str
+  default: '{{_template_version}}'
+  when: false
 
 testing:
   default: yes
