@@ -10,6 +10,7 @@ copier \
     -d project_description='test updating from try-copier' \
     -d project_name_kebab_case='test-try-copier' \
     --defaults
+    --trust
 cd test-try-copier/
 uv run python -m src.test_try_copier.main
 ```

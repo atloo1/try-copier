@@ -73,3 +73,6 @@ testing:
   default: yes
   help: include testing via pytest?
   type: bool
+
+_tasks:
+  - '[ -d .git ] || (git init --initial-branch=main)'
