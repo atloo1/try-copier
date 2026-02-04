@@ -3,7 +3,13 @@
 try updating from this remote
 
 ```
-copier copy "https://github.com/atloo1/try-copier" test-try-copier
+copier \
+    copy \
+    https://github.com/atloo1/try-copier \
+    test-try-copier \
+    -d project_description='test updating from try-copier' \
+    -d project_name_kebab_case='test-try-copier' \
+    --defaults
 cd test-try-copier/
 uv run python -m src.test_try_copier.main
 ```
