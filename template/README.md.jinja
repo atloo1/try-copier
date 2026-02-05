@@ -35,11 +35,12 @@ docker run --name {{project_name_kebab_case}} {{project_name_kebab_case}}
 
 ## development
 
-### 1st time setup
+### setup
 
 ```
 git clone https://github.com/{{ author_name }}/{{ project_name_kebab_case }}
 cd {{ project_name_kebab_case }}/
+uv sync --group dev
 uv run pre-commit install
 ```
 
