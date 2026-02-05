@@ -1,12 +1,13 @@
 [project]
-name = "try-copier"
-version = "0.1.19"
-description = "try updating from this remote"
-readme = "README.md"
-requires-python = ">=3.10"
 dependencies = [
     "copier>=9.11.3",
 ]
+description = "Python project templating via copier, supporting automated [1] package management via uv, [2] dependency updates via Renovate, [3] testing via pytest, [4] linting via mypy & ruff, & [5] CI/CD via GitHub Actions & pre-commit  "
+license = "MIT"
+name = "try-copier"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.20"
 
 [dependency-groups]
 dev = [
