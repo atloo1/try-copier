@@ -20,14 +20,14 @@ templated from https://github.com/atloo1/try-copier v{{template_version}}
 
 ## use
 
-{% if containerize %}### with [Docker](https://docs.docker.com/get-started/get-docker/)
+{% if containerize %}### via [Docker](https://docs.docker.com/get-started/get-docker/)
 
 ```
 docker build . -t {{project_name_kebab_case}}
 docker run --name {{project_name_kebab_case}} {{project_name_kebab_case}}
 ```{% endif %}
 
-### Python (via [uv](https://docs.astral.sh/uv/getting-started/installation/))
+### via Python (via [uv](https://docs.astral.sh/uv/getting-started/installation/))
 
 ```
 uv run python -m src.{{project_name_snake_case}}.main
@@ -35,7 +35,7 @@ uv run python -m src.{{project_name_snake_case}}.main
 
 ## development
 
-### setup
+### setup (requires [uv](https://docs.astral.sh/uv/getting-started/installation/))
 
 ```
 git clone https://github.com/{{author_name}}/{{project_name_kebab_case}}
@@ -49,3 +49,9 @@ uv run pre-commit install
 ```
 uv run pytest
 ```{% endif %}
+
+### update template (requires [copier](https://copier.readthedocs.io/en/stable/#installation), preferably via [uv](https://docs.astral.sh/uv/getting-started/installation/))
+
+```
+copier update --defaults --trust
+```
