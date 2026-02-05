@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  all-in-one-job:
+  ci-job:
     runs-on: ubuntu-latest
 
     strategy:
@@ -39,7 +39,7 @@ jobs:
             pre-commit-4|{% raw %}${{ env.pythonLocation }}|{% endraw %}
 
       - name: install project
-        run: uv sync --locked --all-extras --dev && uv pip install -e .
+        run: uv sync --all-extras --dev --locked
 
       - name: run pre-commit
         run: uv run pre-commit run --all-files

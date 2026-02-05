@@ -20,12 +20,6 @@ templated from https://github.com/atloo1/try-copier v{{template_version}}
 
 ## use
 
-### with [uv](https://docs.astral.sh/uv/getting-started/installation/)
-
-```
-uv run python -m src.{{project_name_snake_case}}.main
-```
-
 {% if containerize %}### with [Docker](https://docs.docker.com/get-started/get-docker/)
 
 ```
@@ -33,13 +27,19 @@ docker build . -t {{project_name_kebab_case}}
 docker run --name {{project_name_kebab_case}} {{project_name_kebab_case}}
 ```{% endif %}
 
+### Python (via [uv](https://docs.astral.sh/uv/getting-started/installation/))
+
+```
+uv run python -m src.{{project_name_snake_case}}.main
+```
+
 ## development
 
 ### setup
 
 ```
-git clone https://github.com/{{ author_name }}/{{ project_name_kebab_case }}
-cd {{ project_name_kebab_case }}/
+git clone https://github.com/{{author_name}}/{{project_name_kebab_case}}
+cd {{project_name_kebab_case}}/
 uv sync --group dev
 uv run pre-commit install
 ```
