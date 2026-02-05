@@ -23,7 +23,7 @@ templated from https://github.com/atloo1/try-copier v{{template_version}}
 ### with [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 ```
-uv run python -m src.{{project_name_kebab_case.replace('-', '_')}}.main
+uv run python -m src.{{project_name_snake_case}}.main
 ```
 
 {% if containerize %}### with [Docker](https://docs.docker.com/get-started/get-docker/)
@@ -40,6 +40,7 @@ docker run --name {{project_name_kebab_case}} {{project_name_kebab_case}}
 ```
 git clone https://github.com/{{ author_name }}/{{ project_name_kebab_case }}
 cd {{ project_name_kebab_case }}/
+uv run pre-commit install
 ```
 
 {% if testing %}### test locally{% if github_actions %} (preemptively pass the corresponding GitHub action){% endif %}

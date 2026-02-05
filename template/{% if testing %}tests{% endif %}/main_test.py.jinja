@@ -1,5 +1,5 @@
 """
-test src/{{ project_name_kebab_case.replace('-', '_') }}/main.py
+test src/{{project_name_snake_case}}/main.py
 
 run with:
 ```
@@ -9,7 +9,7 @@ uv run pytest tests/main_test.py
 
 import pytest
 
-from {{ project_name_kebab_case.replace('-', '_') }} import main
+from {{project_name_snake_case}} import main
 
 
 def test_main():

@@ -42,8 +42,13 @@ project_name_kebab_case:
   type: str
   validator: >-
     {% if not (project_name_kebab_case | regex_search('^[-a-zA-Z][-a-zA-Z0-9]+$')) %}
-    {{ project_name_kebab_case }} is not kebab case: https://en.wikipedia.org/wiki/Letter_case#Kebab_case
+    {{project_name_kebab_case}} is not kebab case: https://en.wikipedia.org/wiki/Letter_case#Kebab_case
     {% endif %}
+
+project_name_snake_case:
+  default: "{{project_name_kebab_case.replace('-', '_')}}"
+  type: str
+  when: false
 
 project_python_min_version:
   default: '3.10'
@@ -65,8 +70,8 @@ renovate:
   type: bool
 
 template_version:
-  type: str
   default: TODO
+  type: str
   when: false
 
 testing:
@@ -80,9 +85,4 @@ _tasks:
   - 'uv run pre-commit install'
   - 'git add .'
   - 'uv run pre-commit run --all-files || git add $(git diff --name-only)'
-  - >
-    {% if _copier_conf.ops == 'update' %}
-    git commit -m '`copier update`'
-    {% else %}
-    git commit -m v{{project_version}}
-    {% endif %}
+  - 'git commit -m copier'
