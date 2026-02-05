@@ -1,6 +1,6 @@
 # {{project_name_kebab_case}}
 
-{% if github_actions %}[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/{{author_name}}/{{project_name_kebab_case}}/ci.yaml)](https://github.com/{{author_name}}/{{project_name_kebab_case}}/actions/workflows/ci.yaml?query=branch%3Amain){% endif %}
+{% if github_actions %}[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/{{author_name}}/{{project_name_kebab_case}}/ci.yml)](https://github.com/{{author_name}}/{{project_name_kebab_case}}/actions/workflows/ci.yml?query=branch%3Amain){% endif %}
 [![Dynamic TOML Badge](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2F{{author_name}}%2F{{project_name_kebab_case}}%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24.project.requires-python&label=python)](https://github.com/{{author_name}}/{{project_name_kebab_case}}/blob/main/pyproject.toml)
 [![Dynamic TOML Badge](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2F{{author_name}}%2F{{project_name_kebab_case}}%2Frefs%2Fheads%2Fmain%2Fpyproject.toml&query=%24.project.version&label=version)](https://github.com/{{author_name}}/{{project_name_kebab_case}}/blob/main/pyproject.toml)
 [![GitHub License](https://img.shields.io/github/license/{{author_name}}/{{project_name_kebab_case}})](https://github.com/{{author_name}}/{{project_name_kebab_case}}/blob/main/LICENSE)
@@ -33,7 +33,7 @@ docker run --name {{project_name_kebab_case}} {{project_name_kebab_case}}
 uv run python -m src.{{project_name_snake_case}}.main
 ```
 
-## development
+## develop
 
 ### setup (requires [uv](https://docs.astral.sh/uv/getting-started/installation/))
 

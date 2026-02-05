@@ -7,7 +7,7 @@ license = "MIT"
 name = "try-copier"
 readme = "README.md"
 requires-python = ">=3.10"
-version = "0.1.22"
+version = "0.1.23"
 
 [dependency-groups]
 dev = [
