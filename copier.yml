@@ -79,6 +79,5 @@ _tasks:
   - 'uv add --group dev mypy pre-commit {% if testing %}pytest{% endif %} ruff'
   - 'uv run pre-commit install'
   - 'git add .'
-  - 'uv run pre-commit run --all-files'
-  - 'git add .'
+  - 'uv run pre-commit run --all-files || git add $(git diff --name-only)'
   - 'git commit -m v{{project_version}}'
