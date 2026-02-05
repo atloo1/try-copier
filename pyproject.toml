@@ -1,10 +1,14 @@
 [project]
 name = "try-copier"
-version = "0.1.14"
-description = "Add your description here"
+version = "0.1.15"
+description = "try updating from this remote"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "copier>=9.11.3",
+]
+
+[dependency-groups]
+dev = [
     "pre-commit>=4.5.1",
 ]
