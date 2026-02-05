@@ -80,4 +80,9 @@ _tasks:
   - 'uv run pre-commit install'
   - 'git add .'
   - 'uv run pre-commit run --all-files || git add $(git diff --name-only)'
-  - 'git commit -m v{{project_version}}'
+  - >
+    {% if _copier_conf.ops == 'update' %}
+    git commit -m '`copier update`'
+    {% else %}
+    git commit -m v{{project_version}}
+    {% endif %}
